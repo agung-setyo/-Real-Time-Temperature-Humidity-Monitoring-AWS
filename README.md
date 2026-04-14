@@ -11,16 +11,17 @@ dashboard
 web yang berjalan di EC2. 
  
 ## Arsitektur 
-Wokwi Simulator → MQTT → AWS IoT Core → Lambda → RDS MySQL 
+Wokwi Simulator → MQTT → AWS IoT Core → Lambda → RDS MySQL S3 (raw payload)
                                        ↓ 
-                                      S3 (raw payload) 
-EC2 (Web Dashboard) ← HTTP ← Browser (End User) 
+                                      RDS MySQL → S3 EC2 (Web Dashboard) 
+                                                  ↓ 
+                                                  HTTP Browser (End User) 
  
 ## Layanan AWS yang Digunakan - AWS IoT Core  : MQTT broker & rule engine - AWS Lambda    : Serverless data processing - AWS RDS MySQL : Structured sensor data storage - AWS S3        : Raw payload object storage - AWS EC2       : Web server & monitoring dashboard 
  
 ## Cara Menjalankan 
 # 1. Clone repository 
-git clone https://github.com/<org>/iot-cloud-monitoring.git 
+[git clone https://github.com/<org>/iot-cloud-monitoring.git ](https://github.com/agung-setyo/-Real-Time-Temperature-Humidity-Monitoring-AWS/blob/main/README.md)
  
 # 2. Setup infrastruktur (Minggu 2) 
 cd infra/ && terraform init && terraform plan && terraform apply 
